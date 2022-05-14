@@ -13,15 +13,24 @@ export class Potter {
 
         for (let bookindex = 0; bookindex < this.books.length; bookindex++){
             price += 100;
-            if (!(unique_books.includes(this.books[bookindex]))){
+            if (this.uniquebook(unique_books, bookindex)){
                 num_diff_books++;
                 unique_books[currentindex++] = this.books[bookindex]
             }
         }
 
+        price = this.aftercost(price, num_diff_books);
+        
+        return price;
+    }
+
+    private uniquebook(unique_books: number[], bookindex: number) {
+        return !(unique_books.includes(this.books[bookindex]));
+    }
+
+    private aftercost(price: number, num_diff_books: number) {
         let cost = 1 - 0.05*num_diff_books;
         price *= cost;
-        
         return price;
     }
 }
