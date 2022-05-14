@@ -21,14 +21,9 @@ describe('Potter', () => {
     expect(potter.price).toBe(190);
   });
 
-  test('buy three books', () => {
-    buyMany([1, 2, 2]);
-    expect(potter.price).toBe(285);
-  });
-
   function buyMany(books: number[]) {
     for (let i = 0; i < books.length; i++) {
-      potter.buy(i);
+      potter.buy(books[i]);
     }
   }
 });
