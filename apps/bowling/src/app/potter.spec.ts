@@ -1,22 +1,29 @@
 import { Potter } from './potter';
 
 describe('Potter', () => {
+  let potter: Potter;
+
+  beforeEach(() => {
+    potter = new Potter();
+  });
+
   it('should create an instance', () => {
-    expect(new Potter()).toBeTruthy();
+    expect(potter).toBeTruthy();
   });
 
   test('buy one book', () => {
-    const potter = new Potter();
-    potter.buy(1);
-
+    buyMany([1]);
     expect(potter.price).toBe(100);
   });
 
   test('buy two different books', () => {
-    const potter = new Potter();
-    potter.buy(1);
-    potter.buy(2);
-
+    buyMany([1, 2]);
     expect(potter.price).toBe(190);
   });
+
+  function buyMany(books: number[]) {
+    for (let i = 0; i < books.length; i++) {
+      potter.buy(i);
+    }
+  }
 });
