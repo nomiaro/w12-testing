@@ -23,7 +23,7 @@ describe('Potter', () => {
 
   test('buy three books', () => {
     buyMany([1, 2, 2]);
-    expect(potter.price).toBe(290);
+    expect(potter.price).toBe(285);
   });
 
   function buyMany(books: number[]) {
